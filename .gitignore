@@ -1,0 +1,6 @@
+*.pyc
+/media/
+/venv/
+.idea
+/jupyter/
+core/local_settings.py
