@@ -8,7 +8,5 @@ from mysite import views
 
 
 urlpatterns = [
-    path('blank/', views.blank),
     path('', views.index),
-
 ]

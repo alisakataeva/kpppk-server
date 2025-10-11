@@ -45,3 +45,20 @@ class Program(models.Model):
         verbose_name = "программа"
         verbose_name_plural = "программы"
         ordering = ["-created_at"]
+
+
+class Page(models.Model):
+    code = models.CharField(verbose_name="Код страницы", max_length=50, unique=True)
+    url = models.CharField(verbose_name="URL страницы", max_length=50)
+    group = models.CharField(verbose_name="Код группы", max_length=20)
+    group_name = models.CharField(verbose_name="Название группы", max_length=50, null=True, blank=True)
+    title = models.CharField(verbose_name="Заголовок страницы", max_length=250)
+    content = models.TextField(verbose_name="HTML содержание страницы")
+    order = models.PositiveIntegerField(verbose_name="Порядок отображения в меню")
+    
+    created_at = models.DateTimeField(verbose_name="Дата создания", null=True, blank=True)
+    is_active = models.BooleanField(verbose_name="Активен", default=True)
+
+    class Meta:
+        verbose_name = "страница"
+        verbose_name_plural = "страницы"

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import SiteSetting, News, Program
+from .models import SiteSetting, News, Program, Page
 
 
 # Register your models here.
@@ -9,3 +9,4 @@ from .models import SiteSetting, News, Program
 admin.site.register(SiteSetting)
 admin.site.register(News)
 admin.site.register(Program)
+admin.site.register(Page)
