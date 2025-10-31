@@ -1,6 +1,7 @@
 *.pyc
 /media/
 /mysite/static/
+/static/
 /venv/
 .idea
 /jupyter/

@@ -55,7 +55,6 @@ def get_news_detail_endpoint(request: HttpRequest, request_data: GetNewsDetailRe
 
 @router.post('/program/list', response={200: ProgramListResponse})
 def get_program_list_endpoint(request: HttpRequest):
-    raise Exception('pupupu')
     return 200, {'code': 'OK', 'message': '', 'program_list': get_program_list()}
 
 
