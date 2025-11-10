@@ -9,6 +9,9 @@ class SiteSetting(models.Model):
     name = models.CharField(verbose_name="Название", max_length=50)
     value = models.TextField(verbose_name="Значение")
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = "настройка"
         verbose_name_plural = "настройки"
@@ -23,13 +26,13 @@ class News(models.Model):
     created_at = models.DateTimeField(verbose_name="Дата создания", null=True, blank=True)
     is_active = models.BooleanField(verbose_name="Активен", default=True)
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         verbose_name = "новость"
         verbose_name_plural = "новости"
         ordering = ["-created_at"]
-
-    def __str__(self):
-        return self.title
 
 
 class Program(models.Model):
@@ -40,6 +43,9 @@ class Program(models.Model):
 
     created_at = models.DateTimeField(verbose_name="Дата создания", null=True, blank=True)
     is_active = models.BooleanField(verbose_name="Активен", default=True)
+
+    def __str__(self):
+        return self.code + " " + self.name
 
     class Meta:
         verbose_name = "программа"
@@ -59,6 +65,23 @@ class Page(models.Model):
     created_at = models.DateTimeField(verbose_name="Дата создания", null=True, blank=True)
     is_active = models.BooleanField(verbose_name="Активен", default=True)
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         verbose_name = "страница"
         verbose_name_plural = "страницы"
+
+
+class File(models.Model):
+    code = models.CharField(verbose_name="Код", max_length=50, unique=True)
+    name = models.CharField(verbose_name="Название", max_length=50)
+    file = models.FileField(verbose_name="Файл", upload_to="files")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "файл"
+        verbose_name_plural = "файлы"
+        ordering = ["-name"]
