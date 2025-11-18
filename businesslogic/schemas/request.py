@@ -17,6 +17,10 @@ class GetNewsListRequest(Schema):
     truncated: Optional[int]
 
 
+class GetNewsPaginationRequest(Schema):
+    page: int
+
+
 #
 
 
@@ -33,4 +37,11 @@ class GetProgramListRequest(Schema):
 
 class GetPageGroupRequest(Schema):
     group: str
+
+
+#
+
+
+class SearchRequest(Schema):
+    searchstr: str
 

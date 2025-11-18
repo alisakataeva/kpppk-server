@@ -8,17 +8,18 @@ from common.schemas import BaseJsonResponse
 from businesslogic.schemas.request import (
     GetNewsDetailRequest, GetNewsListRequest, \
     GetProgramDetailRequest, GetProgramListRequest, \
-    GetPageGroupRequest
+    GetPageGroupRequest, SearchRequest, GetNewsPaginationRequest
 )
 from businesslogic.schemas.response import (
     NewsListResponse, NewsDetailResponse, \
     ProgramListResponse, ProgramDetailResponse, \
-    PageGroupResponse
+    PageGroupResponse, SearchResponse, NewsPaginationResponse
 )
-from businesslogic.views.news import get_news_list, get_news_detail, get_landing_news_list
+from businesslogic.views.news import get_news_list, get_news_detail, get_landing_news_list, get_news_pagination
 from businesslogic.views.program import get_program_list, get_program_detail, get_landing_program_list
 from businesslogic.views.page import get_page_list_by_group
 from businesslogic.views.other import send_feedback_email
+from businesslogic.views.search import page_fulltext_search
 
 
 #
@@ -33,6 +34,11 @@ def blank_request(request: HttpRequest):
 
 
 #
+
+
+@router.post('/news/pagination', response={200: NewsPaginationResponse})
+def get_news_pagination_endpoint(request: HttpRequest, request_data: GetNewsPaginationRequest):
+    return 200, {'code': 'OK', 'message': '', 'news_pagination': get_news_pagination(request_data.page)}
 
 
 @router.post('/news/list', response={200: NewsListResponse})
@@ -86,3 +92,11 @@ def send_feedback_email_endpoint(request: HttpRequest):
         return 200, {'code': 'OK', 'message': 'Email was sent successfully'}
     except Exception as e:
         return 200, {'code': 'ERR', 'message': str(e)}
+
+
+#
+
+
+@router.post('/search', response={200: SearchResponse})
+def search_endpoint(request: HttpRequest, request_data: SearchRequest):
+    return 200, {'code': 'OK', 'message': '', 'page_list': page_fulltext_search(request_data.searchstr)}
