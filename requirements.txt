@@ -1,3 +1,4 @@
 Django==5.2.4
-django-cors-headers-4.7.0
-ninja==1.11.1.4
+django-cors-headers==4.7.0
+ninja==1.4.3
+pip==25.3
