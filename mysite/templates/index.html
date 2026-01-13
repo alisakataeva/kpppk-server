@@ -6,11 +6,66 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
-    <script type="module" crossorigin src="/static/assets/index-BHFL5YA6.js"></script>
-    <link rel="stylesheet" crossorigin href="/static/assets/index-B_GrB3L2.css">
+    <title>КПППК (Демо)</title>
+    <script type="module" crossorigin src="/static/assets/index.js"></script>
+    <link rel="stylesheet" crossorigin href="/static/assets/index.css">
   </head>
   <body>
     <div id="app"></div>
+    <div id="scrollToTopBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="32" height="32"><path fill="#fff" d="M297.4 201.4C309.9 188.9 330.2 188.9 342.7 201.4L502.7 361.4C515.2 373.9 515.2 394.2 502.7 406.7C490.2 419.2 469.9 419.2 457.4 406.7L320 269.3L182.6 406.6C170.1 419.1 149.8 419.1 137.3 406.6C124.8 394.1 124.8 373.8 137.3 361.3L297.3 201.3z"/></svg></svg>
+    </div>
   </body>
 </html>
+
+<style>
+
+#scrollToTopBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #0B387A;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+
+#scrollToTopBtn.showBtn {
+ display: flex;
+}
+
+</style>
+
+<script>
+
+var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+var rootElement = document.documentElement;
+
+function scrollToTop() {
+  rootElement.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+scrollToTopBtn.addEventListener("click", scrollToTop);
+ 
+function handleScroll() {
+  // Do something on scroll
+  var scrollTotal = rootElement.scrollHeight - rootElement.clientHeight
+  if ((rootElement.scrollTop / scrollTotal ) > 0.50 ) {
+    // Show button
+    scrollToTopBtn.classList.add("showBtn")
+  } else {
+    // Hide button
+    scrollToTopBtn.classList.remove("showBtn")
+  }
+}
+ 
+document.addEventListener("scroll", handleScroll)
+
+</script>
