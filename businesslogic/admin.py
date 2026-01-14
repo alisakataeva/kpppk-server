@@ -12,7 +12,7 @@ class PageAdmin(admin.ModelAdmin):
 
 
 class FileAdmin(admin.ModelAdmin):
-    list_display = ["category", "name"]
+    list_display = ["name", "category"]
     list_filter = ["category"]
 
 
