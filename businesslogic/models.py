@@ -72,8 +72,30 @@ class Page(models.Model):
         verbose_name = "страница"
         verbose_name_plural = "страницы"
 
+    
+# 
+
+
+FILE_CATEGORY_CHOICES = [
+    ('commoninfo', 'Основные сведения'),
+    ('structure', 'Структура и органы управления'),
+    ('documents', 'Основная документация'),
+    ('education', 'Образование'),
+    ('management', 'Руководство и педагогический состав'),
+    ('equipment', 'Материально-техническое обеспечение. Доступная среда'),
+    ('paidservices', 'Платные образовательные услуги'),
+    ('finance', 'Финансово-хозяйственная деятельность'),
+    ('studentinfo', 'Вакантные места. Стипендии'),
+
+    ('applicants', 'Поступающим'),
+    ('students', 'Студентам'),
+    ('teachers', 'Учителям'),
+    ('professionalitet', 'Профессионалитет'),
+]
+
 
 class File(models.Model):
+    category = models.CharField(verbose_name="Категория", max_length=20, choices=FILE_CATEGORY_CHOICES, null=True, blank=True)
     code = models.CharField(verbose_name="Код", max_length=50, unique=True)
     name = models.CharField(verbose_name="Название", max_length=50)
     file = models.FileField(verbose_name="Файл", upload_to="files")
