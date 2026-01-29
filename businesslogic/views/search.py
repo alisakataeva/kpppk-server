@@ -10,7 +10,7 @@ from businesslogic.models import Page
 def page_fulltext_search(searchstr: str) -> list[Page]:
     with connection.cursor() as cursor:
         cursor.execute("""
-            SELECT * FROM businesslogic_page WHERE MATCH(title, content)
+            SELECT * FROM businesslogic_page WHERE MATCH(fulltext_field)
             AGAINST(%s IN NATURAL LANGUAGE MODE)
         """, [searchstr])
         res = cursor.fetchall()
