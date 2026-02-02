@@ -45,3 +45,12 @@ class GetPageGroupRequest(Schema):
 class SearchRequest(Schema):
     searchstr: str
 
+
+#
+
+
+class EmailFeedbackRequest(Schema):
+    email: str
+    name: str
+    message: str
+
