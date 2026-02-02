@@ -66,7 +66,7 @@ class Page(models.Model):
     
     created_at = models.DateTimeField(verbose_name="Дата создания", null=True, blank=True)
     is_active = models.BooleanField(verbose_name="Активен", default=True)
-    fulltext_field = models.CharField(verbose_name="Поле для полнотекстового поиска", max_length=500, null=True, blank=True)
+    fulltext_field = models.TextField(verbose_name="Поле для полнотекстового поиска", max_length=500, null=True, blank=True)
 
     def __str__(self):
         return self.title
