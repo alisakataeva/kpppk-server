@@ -111,7 +111,6 @@ FILE_CATEGORY_CHOICES = [
 
 class File(models.Model):
     category = models.CharField(verbose_name="Категория", max_length=20, choices=FILE_CATEGORY_CHOICES, null=True, blank=True)
-    code = models.CharField(verbose_name="Код", max_length=50, unique=True)
     name = models.CharField(verbose_name="Название", max_length=250)
     file = models.FileField(verbose_name="Файл", upload_to="files")
 
