@@ -15,7 +15,7 @@ def get_news_list() -> list[News]:
 
 
 def get_news_pagination(page: int) -> NewsPaginationOutSchema:
-    p = Paginator(News.objects.all(), 5)
+    p = Paginator(News.objects.all(), 6)
     return {
         "current_page": page,
         "num_pages": p.num_pages,

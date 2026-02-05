@@ -8,7 +8,8 @@ from common.schemas import BaseJsonResponse
 from businesslogic.schemas.request import (
     GetNewsDetailRequest, GetNewsListRequest, \
     GetProgramDetailRequest, GetProgramListRequest, \
-    GetPageGroupRequest, SearchRequest, GetNewsPaginationRequest
+    GetPageGroupRequest, SearchRequest, GetNewsPaginationRequest, \
+    EmailFeedbackRequest
 )
 from businesslogic.schemas.response import (
     NewsListResponse, NewsDetailResponse, \
@@ -18,7 +19,7 @@ from businesslogic.schemas.response import (
 from businesslogic.views.news import get_news_list, get_news_detail, get_landing_news_list, get_news_pagination
 from businesslogic.views.program import get_program_list, get_program_detail, get_landing_program_list
 from businesslogic.views.page import get_page_list_by_group
-from businesslogic.views.other import send_feedback_email
+from businesslogic.views.feedback import send_feedback_email
 from businesslogic.views.search import page_fulltext_search
 
 
@@ -86,10 +87,10 @@ def get_page_group_endpoint(request: HttpRequest, request_data: GetPageGroupRequ
 
 
 @router.post('/send-feedback-email', response={200: BaseJsonResponse})
-def send_feedback_email_endpoint(request: HttpRequest):
+def send_feedback_email_endpoint(request: HttpRequest, request_data: EmailFeedbackRequest):
     try:
-        send_feedback_email()
-        return 200, {'code': 'OK', 'message': 'Email was sent successfully'}
+        send_feedback_email(request_data.email, request_data.name, request_data.message)
+        return 200, {'code': 'OK', 'message': 'Сообщение успешно отправлено'}
     except Exception as e:
         return 200, {'code': 'ERR', 'message': str(e)}
 

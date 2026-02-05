@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 
@@ -64,6 +66,7 @@ class Page(models.Model):
     
     created_at = models.DateTimeField(verbose_name="Дата создания", null=True, blank=True)
     is_active = models.BooleanField(verbose_name="Активен", default=True)
+    fulltext_field = models.TextField(verbose_name="Поле для полнотекстового поиска", max_length=500, null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -107,3 +110,19 @@ class File(models.Model):
         verbose_name = "файл"
         verbose_name_plural = "файлы"
         ordering = ["-name"]
+
+
+class Feedback(models.Model):
+    name = models.CharField(verbose_name="Имя отправителя", max_length=50)
+    email = models.CharField(verbose_name="Email отправителя", max_length=50)
+    message = models.TextField(verbose_name="Сообщение")
+    
+    created_at = models.DateTimeField(verbose_name="Дата создания", default=datetime.now)
+    is_completed = models.BooleanField(verbose_name="Заявка обработана", default=False)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = "заявка"
+        verbose_name_plural = "заявки"

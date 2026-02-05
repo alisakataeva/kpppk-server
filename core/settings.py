@@ -112,12 +112,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Yekaterinburg'
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
 
 
@@ -134,6 +134,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+
+# MAIL settings
+
+KPPPK_ADMIN_EMAIL = "kppt.kud@mail.ru"
+
+SMTP_SERVER = "smtp.timeweb.ru"
+SMTP_PORT = 25
+
+NOREPLY_SENDER_EMAIL = "noreply@xn--j1aaoaa.xn--p1ai" # noreply@кпппк.рф
+NOREPLY_SENDER_PASSWORD = ""
+
+NOTIFICATIONS_SENDER_EMAIL = "notifications@xn--j1aaoaa.xn--p1ai" # notifications@кпппк.рф
+NOTIFICATIONS_SENDER_PASSWORD = ""
 
 
 # Import local settings
