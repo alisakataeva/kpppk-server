@@ -80,6 +80,9 @@ class Page(models.Model):
 
 
 FILE_CATEGORY_CHOICES = [
+    ('methodology', 'Методическая работа'),
+    ('anticorruption', 'Антикоррупционная политика'),
+
     ('commoninfo', 'Основные сведения'),
     ('structure', 'Структура и органы управления'),
     ('documents', 'Основная документация'),
