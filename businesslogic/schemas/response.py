@@ -1,12 +1,16 @@
 from typing import Optional
 
 from common.schemas import BaseJsonResponse
-from .news import NewsListOutSchema, NewsPaginationOutSchema
+from .news import NewsListOutSchema, NewsPaginationOutSchema, NewsLandingOutSchema
 from .program import ProgramListOutSchema
 from .page import PageOutSchema
 
 
 #
+
+
+class NewsListLandingResponse(BaseJsonResponse):
+    news_list: Optional[list[NewsLandingOutSchema]]
 
 
 class NewsPaginationResponse(BaseJsonResponse):

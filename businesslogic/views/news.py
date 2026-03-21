@@ -15,7 +15,7 @@ def get_news_list() -> list[News]:
 
 
 def get_news_pagination(page: int) -> NewsPaginationOutSchema:
-    p = Paginator(News.objects.all(), 6)
+    p = Paginator(News.objects.all(), 12)
     return {
         "current_page": page,
         "num_pages": p.num_pages,
@@ -24,7 +24,14 @@ def get_news_pagination(page: int) -> NewsPaginationOutSchema:
 
 
 def get_landing_news_list() -> list[News]:
-    return list(News.objects.filter(is_active=True))[:4]
+    news_list = News.objects.filter(is_active=True).only('title', 'image')[:8]
+    return [
+        {
+            'title': news.title,
+            'image': news.image.url if news.image else None
+        }
+        for news in news_list
+    ]
 
 
 def get_news_detail(id: int) -> News:

@@ -14,7 +14,8 @@ from businesslogic.schemas.request import (
 from businesslogic.schemas.response import (
     NewsListResponse, NewsDetailResponse, \
     ProgramListResponse, ProgramDetailResponse, \
-    PageGroupResponse, SearchResponse, NewsPaginationResponse
+    PageGroupResponse, SearchResponse, NewsPaginationResponse, \
+    NewsListLandingResponse
 )
 from businesslogic.views.news import get_news_list, get_news_detail, get_landing_news_list, get_news_pagination
 from businesslogic.views.program import get_program_list, get_program_detail, get_landing_program_list
@@ -47,7 +48,7 @@ def get_news_list_endpoint(request: HttpRequest):
     return 200, {'code': 'OK', 'message': '', 'news_list': get_news_list()}
 
 
-@router.post('/news/landing-list', response={200: NewsListResponse})
+@router.post('/news/landing-list', response={200: NewsListLandingResponse})
 def get_news_landing_list_endpoint(request: HttpRequest):
     return 200, {'code': 'OK', 'message': '', 'news_list': get_landing_news_list()}
 

@@ -6,6 +6,13 @@ from businesslogic.models import News
 #
 
 
+class NewsLandingOutSchema(ModelSchema):
+
+    class Config:
+        model = News
+        model_fields = ["image", "title"]
+
+
 class NewsListOutSchema(ModelSchema):
 
     class Config:
