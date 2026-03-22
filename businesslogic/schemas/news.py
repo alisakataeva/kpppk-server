@@ -10,7 +10,7 @@ class NewsLandingOutSchema(ModelSchema):
 
     class Config:
         model = News
-        model_fields = ["image", "title"]
+        model_fields = ["id", "image", "title"]
 
 
 class NewsListOutSchema(ModelSchema):

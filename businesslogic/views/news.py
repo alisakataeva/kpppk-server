@@ -24,9 +24,10 @@ def get_news_pagination(page: int) -> NewsPaginationOutSchema:
 
 
 def get_landing_news_list() -> list[News]:
-    news_list = News.objects.filter(is_active=True).only('title', 'image')[:8]
+    news_list = News.objects.filter(is_active=True).only('id', 'title', 'image')[:8]
     return [
         {
+            'id': news.id,
             'title': news.title,
             'image': news.image.url if news.image else None
         }
