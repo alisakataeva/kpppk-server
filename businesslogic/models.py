@@ -169,3 +169,20 @@ class Feedback(models.Model):
     class Meta:
         verbose_name = "заявка"
         verbose_name_plural = "заявки"
+
+
+class Slider(models.Model):
+    image_desktop = models.ImageField(verbose_name="Изображение на ПК")
+    image_mobile = models.ImageField(verbose_name="Изображение на телефонах")
+    order = models.PositiveIntegerField(verbose_name="Порядок отображения")
+    url = models.CharField(verbose_name="Ссылка", max_length=250)
+    
+    created_at = models.DateTimeField(verbose_name="Дата создания", default=datetime.now)
+    is_active = models.BooleanField(verbose_name="Активный слайд", default=True)
+
+    def __str__(self):
+        return self.url
+
+    class Meta:
+        verbose_name = "слайдер"
+        verbose_name_plural = "слайдеры"

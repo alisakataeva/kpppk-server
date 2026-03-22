@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import SiteSetting, News, Program, Page, File, Feedback
+from .models import SiteSetting, News, Program, Page, File, Feedback, Slider
 
 
 # Filtering, sorting
@@ -27,6 +27,7 @@ class FeedbackAdmin(admin.ModelAdmin):
 admin.site.register(SiteSetting)
 admin.site.register(News)
 admin.site.register(Program)
+admin.site.register(Slider)
 admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(Page, PageAdmin)
 admin.site.register(File, FileAdmin)

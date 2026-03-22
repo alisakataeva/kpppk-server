@@ -4,6 +4,7 @@ from common.schemas import BaseJsonResponse
 from .news import NewsListOutSchema, NewsPaginationOutSchema, NewsLandingOutSchema
 from .program import ProgramListOutSchema
 from .page import PageOutSchema
+from .slider import SliderOutSchema
 
 
 #
@@ -48,3 +49,10 @@ class PageGroupResponse(BaseJsonResponse):
 
 class SearchResponse(BaseJsonResponse):
     page_list: Optional[list[PageOutSchema]]
+
+
+#
+
+
+class SliderListResponse(BaseJsonResponse):
+    slider_list: Optional[list[SliderOutSchema]]
