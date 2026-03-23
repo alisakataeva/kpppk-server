@@ -5,6 +5,7 @@ from .news import NewsListOutSchema, NewsPaginationOutSchema, NewsLandingOutSche
 from .program import ProgramListOutSchema
 from .page import PageOutSchema
 from .slider import SliderOutSchema
+from .setting import SettingOutSchema
 
 
 #
@@ -56,3 +57,10 @@ class SearchResponse(BaseJsonResponse):
 
 class SliderListResponse(BaseJsonResponse):
     slider_list: Optional[list[SliderOutSchema]]
+
+
+#
+
+
+class SettingListResponse(BaseJsonResponse):
+    setting_list: Optional[list[SettingOutSchema]]

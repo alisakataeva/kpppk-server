@@ -15,7 +15,7 @@ from businesslogic.schemas.response import (
     NewsListResponse, NewsDetailResponse, \
     ProgramListResponse, ProgramDetailResponse, \
     PageGroupResponse, SearchResponse, NewsPaginationResponse, \
-    NewsListLandingResponse, SliderListResponse
+    NewsListLandingResponse, SliderListResponse, SettingListResponse
 )
 from businesslogic.views.news import get_news_list, get_news_detail, get_landing_news_list, get_news_pagination
 from businesslogic.views.program import get_program_list, get_program_detail, get_landing_program_list
@@ -23,6 +23,7 @@ from businesslogic.views.page import get_page_list_by_group
 from businesslogic.views.feedback import send_feedback_email
 from businesslogic.views.search import page_fulltext_search
 from businesslogic.views.slider import get_slider_list
+from businesslogic.views.setting import get_settings
 
 
 #
@@ -111,3 +112,8 @@ def search_endpoint(request: HttpRequest, request_data: SearchRequest):
 @router.post('/slider', response={200: SliderListResponse})
 def slider_endpoint(request: HttpRequest):
     return 200, {'code': 'OK', 'message': '', 'slider_list': get_slider_list()}
+
+
+@router.post('/settings', response={200: SettingListResponse})
+def get_settings_endpoint(request: HttpRequest):
+    return 200, {'code': 'OK', 'message': '', 'setting_list': get_settings()}
